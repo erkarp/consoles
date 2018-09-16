@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import Window from './components/Console'
+import Window from './components/Window'
 
 export default {
   name: 'App',
   components: {
-    Console
+    Window
   }
 }
 </script>

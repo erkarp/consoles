@@ -1,21 +1,23 @@
 <template>
   <div>
     <input v-model="text">
+    <pre>{{ text }}</pre>
     <Console
       v-for="[index, manipulator] in manipulators.entries()"
-      v-bind:transformer="manipulator" v-bind:key="index"
-     ></Console>
+      v-bind:transformer="manipulator"
+      v-bind:key="index"
+    ></Console>
   </div>
 </template>
 
 <script>
-import Console from './components/Console'
-  
+// import Console from './Console'
+
 export default {
   name: 'Window',
   data () {
     return {
-      text: input, 
+      text: '',
       manipulators: [
         { id: 0, fn: 'Vegetables' },
         { id: 1, fn: 'Cheese' },
