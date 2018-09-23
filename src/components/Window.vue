@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input v-model="text">
+  <div v-on:click="focus()" class="window">
+    <input v-model="text" ref="text">
     <pre>{{ text }}</pre>
     <Console
       v-for="manipulator in manipulators"
@@ -10,6 +10,15 @@
     ></Console>
   </div>
 </template>
+
+<style>
+  .window {
+    height: 100vh;
+  }
+  /* input { 
+    display: none; 
+  } */
+</style>
 
 <script>
 import manipulators from 'manipulators'
@@ -35,12 +44,18 @@ export default {
       text: '',
       manipulators: [
         capitalize.everySecondCharacter,
-        capitalize.everySeventhCharacter,
-        manipulators.capitalize.randomly,
         s => { return customReverse('e', s) },
+        capitalize.everySeventhCharacter,
         s => { return customReverse(' ', s) },
-        s => { return customReverse('', s) }
+        manipulators.capitalize.randomly,
+        s => { return customReverse('', s) },
+        capitalize.everySixthCharacter
       ]
+    }
+  },
+  methods: {
+    focus: function () {
+      this.$refs.text.focus()
     }
   }
 }
