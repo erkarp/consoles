@@ -1,5 +1,5 @@
 <template>
-  <div class="console">{{ transformed }}</div>
+  <pre class="console">{{ transformed }}</pre>
 </template>
 
 <script>
@@ -15,6 +15,14 @@ export default {
 </script>
 <style>
   .console {
-    margin: 10px;
+    display: flex;
+    height: 130px;
+    width: 230px;
+    padding: .5em;
+    box-sizing: border-box;
+    overflow: scroll;
+    white-space: normal;
+    align-items: flex-end;
+    color: lightgreen;
   }
 </style>

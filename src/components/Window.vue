@@ -1,22 +1,36 @@
 <template>
-  <div v-on:click="focus()" class="window">
-    <input v-model="text" ref="text">
-    <pre>{{ text }}</pre>
-    <Console
-      v-for="manipulator in manipulators"
-      v-bind:manipulator="manipulator"
-      v-bind:key="manipulators.indexOf(manipulator)"
-      v-bind:input="text"
-    ></Console>
+  <div>
+    <div>
+      <input v-model="text" ref="text">
+    </div>
+    <div v-on:click="focus()" class="window">
+      <Console
+        v-for="manipulator in manipulators"
+        v-bind:manipulator="manipulator"
+        v-bind:key="manipulators.indexOf(manipulator)"
+        v-bind:input="text"
+      ></Console>
+    </div>
   </div>
 </template>
 
 <style>
   .window {
-    height: 100vh;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1000px;
+    text-align: left;
   }
-  /* input { 
-    display: none; 
+
+  @media (max-width: 1000px) {
+    .window {
+      width: 100%;
+      justify-content: space-evenly;
+    }
+  }
+  /* input {
+    display: none;
   } */
 </style>
 
@@ -49,7 +63,8 @@ export default {
         s => { return customReverse(' ', s) },
         manipulators.capitalize.randomly,
         s => { return customReverse('', s) },
-        capitalize.everySixthCharacter
+        capitalize.everySixthCharacter,
+        capitalize.everyThirdCharacter
       ]
     }
   },
