@@ -4,15 +4,24 @@
     <pre>{{ text }}</pre>
     <Console
       v-for="manipulator in manipulators"
-      v-bind:manipulator="manipulator.fn"
-      v-bind:key="manipulator.id"
+      v-bind:manipulator="manipulator"
+      v-bind:key="manipulators.indexOf(manipulator)"
       v-bind:input="text"
     ></Console>
   </div>
 </template>
 
 <script>
+import manipulators from 'manipulators'
 import Console from './Console'
+
+const capitalize = ['Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh']
+  .reduce((object, current, index) => {
+    object[`every${current}Character`] = s => {
+      return manipulators.capitalize.every(index + 2, s)
+    }
+    return object
+  }, {})
 
 export default {
   name: 'Window',
@@ -23,30 +32,9 @@ export default {
     return {
       text: '',
       manipulators: [
-        {
-          id: 0,
-          fn: s => {
-            return s.split('').reverse().join('')
-          }
-        },
-        {
-          id: 1,
-          fn: s => {
-            return s.toUpperCase()
-          }
-        },
-        {
-          id: 2,
-          fn: s => {
-            return s.toLowerCase()
-          }
-        },
-        {
-          id: 3,
-          fn: s => {
-            return s.split(' ').reverse().join(' ')
-          }
-        }
+        capitalize.everySecondCharacter,
+        capitalize.everySeventhCharacter,
+        manipulators.capitalize.randomly
       ]
     }
   }
