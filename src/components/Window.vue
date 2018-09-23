@@ -23,18 +23,23 @@ const capitalize = ['Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh']
     return object
   }, {})
 
+const customReverse = (on, s) => {
+  return s.split(on).reverse().join(on)
+}
+
 export default {
   name: 'Window',
-  components: {
-    Console
-  },
+  components: { Console },
   data () {
     return {
       text: '',
       manipulators: [
         capitalize.everySecondCharacter,
         capitalize.everySeventhCharacter,
-        manipulators.capitalize.randomly
+        manipulators.capitalize.randomly,
+        s => { return customReverse('e', s) },
+        s => { return customReverse(' ', s) },
+        s => { return customReverse('', s) }
       ]
     }
   }
