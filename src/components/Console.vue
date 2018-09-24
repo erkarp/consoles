@@ -15,14 +15,13 @@ export default {
 </script>
 <style>
   .console {
-    display: flex;
     height: 130px;
     width: 230px;
     padding: .5em;
-    box-sizing: border-box;
     overflow: scroll;
+    box-sizing: border-box;
+    word-break: break-word;
     white-space: normal;
-    align-items: flex-end;
     color: lightgreen;
   }
 </style>

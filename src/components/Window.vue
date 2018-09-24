@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div>
-      <input v-model="text" ref="text">
-    </div>
+    <input v-model="text" ref="text">
     <div v-on:click="focus()" class="window">
       <Console
         v-for="manipulator in manipulators"
@@ -20,6 +18,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 1000px;
+    margin: 2em 0;
     text-align: left;
   }
 
@@ -29,9 +28,14 @@
       justify-content: space-evenly;
     }
   }
-  /* input {
-    display: none;
-  } */
+  input {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 1em;
+    width: 100%;
+    outline: none;
+  }
 </style>
 
 <script>
